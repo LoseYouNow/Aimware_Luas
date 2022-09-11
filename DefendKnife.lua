@@ -39,7 +39,6 @@ local function createMove()
                 local Yaw = NormalizeYaw(AtTargets - 360 - angViewAngles.yaw)
                 gui.SetValue("rbot.antiaim.base", Yaw)
                 set = true;
-                print(player:GetIndex());
             end
         end
     end
