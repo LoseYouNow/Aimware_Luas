@@ -1,7 +1,10 @@
 ------------------------------------------------------------------------------------
 --written by Zixtty1887
 ------------------------------------------------------------------------------------
-
+--Version v1.1
+--Update log
+--Add Trace Line Check
+------------------------------------------------------------------------------------
 local function NormalizeYaw(yaw)
     while yaw > 180 do yaw = yaw - 360 end
     while yaw < -180 do yaw = yaw + 360 end
@@ -35,10 +38,14 @@ local function createMove()
             local playerPosition = player:GetAbsOrigin()
             local distance = (playerPosition - localPosition):Length()
             if distance <= 150 then
-                local AtTargets = CalcAngle(localPosition.x, localPosition.y, playerPosition.x, playerPosition.y)
-                local Yaw = NormalizeYaw(AtTargets - 360 - angViewAngles.yaw)
-                gui.SetValue("rbot.antiaim.base", Yaw)
-                set = true;
+                local endPos = engine.TraceLine(localPosition, playerPosition).endpos
+                local content =  engine.GetPointContents(endPos, 0xFFFFFFFF)
+                if(content == 0)then
+                    local AtTargets = CalcAngle(localPosition.x, localPosition.y, playerPosition.x, playerPosition.y)
+                    local Yaw = NormalizeYaw(AtTargets - 360 - angViewAngles.yaw)
+                    gui.SetValue("rbot.antiaim.base", Yaw)
+                    set = true; 
+                end
             end
         end
     end
