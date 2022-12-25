@@ -64,7 +64,6 @@ local function move(UserCmd)
                     local playerPosition = player:GetAbsOrigin()
                     local endPos = engine.TraceLine(localPosition, playerPosition).endpos
                     local content =  engine.GetPointContents(endPos, MASK_SOLID)
-                    --print(content)
                     if content == 0 then
                         pitchTime = common.Time()
                         break;
