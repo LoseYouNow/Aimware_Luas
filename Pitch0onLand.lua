@@ -37,7 +37,6 @@ local function move()
                 local content =  engine.GetPointContents(endPos, 0xFFFFFFFF)
                 if content == 0 then
                     pitchTime = common.Time()
-                    break;
                 end
                 
             end
