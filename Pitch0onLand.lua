@@ -24,10 +24,7 @@ local function isVisible(entity)
 end
 local function esp(EspBuilder) 
     local ent = EspBuilder:GetEntity();
-
-    --EspBuilder:Color(255,0,0,255);
-    --EspBuilder:AddTextRight(tostring(isVisible(ent)));
-   
+ 
  end
 
  
